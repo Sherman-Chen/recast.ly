@@ -33,6 +33,7 @@ describe ('Search', function() {
       });
 
       var searchInputElement = findRenderedDOMComponentWithClass(app, 'form-control');
+      // debugger;
       Simulate.change(searchInputElement, {target: {value: 'React tutorial'}});
 
       var newVideoEntryTitleElements = scryRenderedDOMComponentsWithClass(app, 'video-list-entry-title');

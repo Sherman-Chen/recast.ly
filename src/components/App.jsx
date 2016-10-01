@@ -18,7 +18,7 @@ class App extends React.Component {
     var options = {
       key: window.YOUTUBE_API_KEY,
       max: 15,
-      query: 'react.js'
+      query: 'turtles'
     }
     return this.props.searchYouTube(options, (videos) => {
       this.setState({
