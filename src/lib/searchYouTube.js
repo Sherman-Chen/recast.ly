@@ -1,5 +1,27 @@
+
 var searchYouTube = (options, callback) => {
-  // TODO
+  //var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=' + maxresult + '&q=' + search + '&type=video&videoEmbeddable=true&key=' + window.YOUTUBE_API_KEY;
+  //console.log(url);
+
+  $.ajax({
+    url: 'https://www.googleapis.com/youtube/v3/search',
+    type: 'GET',
+    data: {
+      key: options.key,
+      q: options.query,
+      maxResults: options.max || 15,
+      videoEmbeddable: 'true',
+      part: 'snippet'
+    },
+    contentType: 'json',
+    success: function(data) {
+      console.log(data);
+      callback(data);
+    },
+    error: function(e) {
+      console.error(e);
+    }
+  });
 };
 
 window.searchYouTube = searchYouTube;
