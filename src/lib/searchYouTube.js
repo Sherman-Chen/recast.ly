@@ -9,14 +9,13 @@ var searchYouTube = (options, callback) => {
     data: {
       key: options.key,
       q: options.query,
-      maxResults: options.max || 15,
+      maxResults: options.max,
       videoEmbeddable: 'true',
       part: 'snippet',
       type: 'video'
     },
     contentType: 'json',
     success: function(data) {
-      console.log(data);
       callback(data.items);
     },
     error: function(e) {
