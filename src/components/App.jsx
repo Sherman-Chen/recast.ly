@@ -8,6 +8,13 @@ class App extends React.Component {
     };
   }
 
+  onVideoListClick(event, video) {
+    console.log('i was clicked!');
+    this.setState({
+      currentVideo: video
+    });
+  }
+
   render() {
 
     return (
@@ -17,7 +24,7 @@ class App extends React.Component {
             <VideoPlayer video={this.state.currentVideo}/>
           </div>
         <div className="col-md-5">
-          <VideoList videos={this.state.videoList}/>
+          <VideoList onClick={this.onVideoListClick.bind(this)} videos={this.state.videoList}/>
         </div>
       </div>
     );

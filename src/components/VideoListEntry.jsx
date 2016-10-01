@@ -1,11 +1,10 @@
 var VideoListEntry = (props) => {
-
   var attributes = props.video.snippet;
-  
+  var trigger = props.onClick;
   return (
-  <div className="video-list-entry">
+  <div className="video-list-entry" onClick={trigger.bind(this, null, props.video)}>
     <div className="media-left media-middle">
-      <img className="media-object" src={attributes.thumbnails.default.url} alt="" />
+      <img className="media-object" src={attributes.thumbnails.default.url} alt={attributes.description} />
     </div>
     <div className="media-body">
       <div className="video-list-entry-title">{attributes.title}</div>
