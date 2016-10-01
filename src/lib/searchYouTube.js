@@ -1,7 +1,5 @@
 
 var searchYouTube = (options, callback) => {
-  //var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=' + maxresult + '&q=' + search + '&type=video&videoEmbeddable=true&key=' + window.YOUTUBE_API_KEY;
-  //console.log(url);
 
   $.ajax({
     url: 'https://www.googleapis.com/youtube/v3/search',
@@ -14,7 +12,6 @@ var searchYouTube = (options, callback) => {
       part: 'snippet',
       type: 'video'
     },
-    contentType: 'json',
     success: function(data) {
       callback(data.items);
     },

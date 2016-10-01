@@ -9,7 +9,6 @@ class App extends React.Component {
   }
 
   onVideoListClick(event, video) {
-    console.log('i was clicked!');
     this.setState({
       currentVideo: video
     });
@@ -19,10 +18,25 @@ class App extends React.Component {
     var options = {
       key: window.YOUTUBE_API_KEY,
       max: 15,
-      query: 'React'
+      query: 'dogs'
     }
-    this.props.searchYouTube(options, (videos) => {
+    return this.props.searchYouTube(options, (videos) => {
       this.setState({
+        currentVideo: videos[0],
+        videoList: videos
+      })
+    });
+  }
+
+  onSearchInput (event) {
+    var options = {
+      key: window.YOUTUBE_API_KEY,
+      max: 15,
+      query: event.currentTarget.value
+    }
+    return this.props.searchYouTube(options, (videos) => {
+      this.setState({
+        currentVideo: videos[0],
         videoList: videos
       })
     });
@@ -32,7 +46,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <Nav />
+        <Nav onSearchInput={this.onSearchInput.bind(this)} />
           <div className="col-md-7">
             <VideoPlayer video={this.state.currentVideo}/>
           </div>
