@@ -15,6 +15,19 @@ class App extends React.Component {
     });
   }
 
+  componentDidMount () {
+    var options = {
+      key: window.YOUTUBE_API_KEY,
+      max: 15,
+      query: 'React'
+    }
+    this.props.searchYouTube(options, (videos) => {
+      this.setState({
+        videoList: videos
+      })
+    });
+  }
+
   render() {
 
     return (
